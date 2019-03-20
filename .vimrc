@@ -4,14 +4,8 @@ filetype off                  " required
 set rtp+=$HOME/.vim/bundle/Vundle.vim/
 call vundle#begin('$HOME/.vim/bundle/')
 " --------------PLUGIN BEGIN--------------
-
 Plugin 'VundleVim/Vundle.vim'
-" Plugin formats supported:
-" 	- GitHub repo
-" 	- http://vim-scripts.org/vim/scripts.html
-" 	- Git plugin not on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Remove Unnecesary Folds
 Plugin 'tmhedberg/SimpylFold'
@@ -19,13 +13,30 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 " Auto-Complete
 Bundle 'Valloric/YouCompleteMe'
+" Check Syntax with Each Save
+Plugin 'vim-syntastic/syntastic'
+" PEP 8 Checking
+Plugin 'nvie/vim-flake8'
+"File Browsing
+Plugin 'scrooloose/nerdtree'
+" Tabs
+Plugin 'jistr/vim-nerdtree-tabs'
+" VIM Search
+Plugin 'kien/ctrlp.vim'
+" Git Integration
+Plugin 'tpope/vim-fugitive'
+" Comment Functions
+Plugin 'scrooloose/nerdcommenter'
 
+
+" Color Schemes
+Plugin 'altercation/vim-colors-solarized'
 
 " ---------------PLUGIN END---------------
 call vundle#end()
 filetype plugin indent on
 
-" Split navigations 
+" Split navigations remapping
 nnoremap <C-J> <C-W><C-J> 
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L> 
@@ -41,16 +52,51 @@ let g:SimpylFold_docstring_preview=1
 
 " PEP8 Indentation
 au BufNewFile,BufRead *.py
-	\ set tabstop=4
-	\ set softtabstop=4
-	\ set shiftwidth=4
-	\ set textwidth=79
-	\ set expandtab
-	\ set autoindent     
-	\ set fileformat=unix
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2 |
+	\ set textwidth=79 |
+	\ set expandtab |
+	\ set autoindent |    
+	\ set fileformat=unix |
 
 " Flag Unnecessary Whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Default UTF-8 Characters
+" Default UTF-8 Char
 set encoding=utf-8
+
+" Use non-experimental clangd for Autocomplete
+let g:ycm_use_clangd = 0
+
+" Syntax Highlighting/Line Numbering
+syntax on
+set nu
+
+" Backspace to previous line
+set backspace=indent,eol,start
+
+"Pretty Code
+let python_highlight_all=1
+
+" python with virtualenv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+	project_base_dir = os.environ['VIRTUAL_ENV']
+	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+	execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+" Color scheme and themes
+if has('gui_running')
+	set background=dark   
+	colorscheme solarized
+endif
+
+call togglebg#map("<F5>")
+
+" System Clipboard
+set clipboard=unnamed
+
