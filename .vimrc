@@ -52,15 +52,16 @@ let g:SimpylFold_docstring_preview=1
 
 " PEP8 Indentation
 au BufNewFile,BufRead *.py
-	\ set tabstop=2 |
-	\ set softtabstop=2 |
-	\ set shiftwidth=2 |
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
 	\ set textwidth=79 |
 	\ set expandtab |
 	\ set autoindent |    
 	\ set fileformat=unix |
 
 " Flag Unnecessary Whitespace
+:highlight BadWhitespace ctermfg=16 ctermbg=253 guifg=#000000 guibg=#F8F8F0
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Default UTF-8 Char
@@ -72,6 +73,7 @@ let g:ycm_use_clangd = 0
 " Syntax Highlighting/Line Numbering
 syntax on
 set nu
+set relativenumber
 
 " Backspace to previous line
 set backspace=indent,eol,start
@@ -100,3 +102,8 @@ call togglebg#map("<F5>")
 " System Clipboard
 set clipboard=unnamed
 
+" Remap colon to semicolon in norman and visual mode, but not in insert mode
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
