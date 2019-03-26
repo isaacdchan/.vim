@@ -107,3 +107,6 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
+
+" Enable mouse scrolling
+:set mouse=a
