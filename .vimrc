@@ -36,16 +36,17 @@ call vundle#end()
 filetype plugin indent on
 
 "Color Schemes
-set termguicolors
+"set termguicolors
 if !has("gui_running")
-	set term=xterm
-	set t_Co=256
-	let &t_AB="\e[48;5;%dm"
-	let &t_AF="\e[38;5;%dm"
+	"set mouse = a
+	"set term=xterm
+	"set t_Co=256
+	"let &t_AB="\e[48;5;%dm"
+	"let &t_AF="\e[38;5;%dm"
 	
-	colorscheme gruvbox
-	let g:gruvbox_contrast_light = 'hard'
-	set background=dark
+	"colorscheme gruvbox
+	"let g:gruvbox_contrast_light = 'hard'
+	"set background=dark
 	"set background=light
 endif
 
@@ -53,12 +54,6 @@ endif
 "Backspace 
 inoremap <Char-0x07F> <BS>
 nnoremap <Char-0x07F> <BS>
-
-"Enable Mouse Scroll
-if !has("gui_running")
-	set term=xterm
-	set mouse=a
-endif
 
 "Split navigations remapping
 nnoremap <C-J> <C-W><C-J> 
@@ -89,13 +84,13 @@ au BufNewFile,BufRead *.py
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "Default UTF-8 Char
-set encoding=utf-8
+"set encoding=utf-8
 
 "Use non-experimental clangd for Autocomplete
 let g:ycm_use_clangd = 0
 
 "Syntax Highlighting/Line Numbering
-syntax on
+"syntax on
 set nu
 set relativenumber
 
