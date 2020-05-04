@@ -1,11 +1,11 @@
 set nocompatible              "be iMproved, required
 filetype off                  "required
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
 call vundle#begin('$HOME/.vim/bundle/')
 "--------------PLUGIN BEGIN--------------
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'wincent/command-t'
+Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Remove Unnecesary Folds
 Plugin 'tmhedberg/SimpylFold'
@@ -29,8 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 "Gruvbox
 Plugin 'morhetz/gruvbox'
-"Solarized8
-Plugin 'lifepillar/vim-solarized8'
+
 
 "---------------PLUGIN END---------------
 call vundle#end()
@@ -44,11 +43,12 @@ if !has("gui_running")
 	let &t_AB="\e[48;5;%dm"
 	let &t_AF="\e[38;5;%dm"
 	
-	colorscheme solarized8 
-	"let g:gruvbox_contrast_light = 'hard'
-	set background=light
+	colorscheme gruvbox
+	let g:gruvbox_contrast_light = 'hard'
+	set background=dark
 	"set background=light
 endif
+
 
 "Backspace 
 inoremap <Char-0x07F> <BS>
