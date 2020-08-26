@@ -29,25 +29,23 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 "Gruvbox
 Plugin 'morhetz/gruvbox'
-
+"Solarized8
+Plugin 'lifepillar/vim-solarized8'
 
 "---------------PLUGIN END---------------
 call vundle#end()
 filetype plugin indent on
 
 "Color Schemes
-"set termguicolors
+set termguicolors
 if !has("gui_running")
 	"set mouse = a
 	"set term=xterm
-	"set t_Co=256
-	"let &t_AB="\e[48;5;%dm"
-	"let &t_AF="\e[38;5;%dm"
-	
-	"colorscheme gruvbox
+	set t_Co=256
+	let &t_AB="\e[48;5;%dm"
+	colorscheme solarized8
 	"let g:gruvbox_contrast_light = 'hard'
-	"set background=dark
-	"set background=light
+	set background=dark
 endif
 
 
@@ -60,6 +58,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L> 
 nnoremap <C-H> <C-W><C-H>
+
+"Append text to end of line hotkey
+inoremap <C-e> <C-o>A
 
 "Enable folding + folding with spacebar 
 set foldmethod=indent
@@ -84,13 +85,13 @@ au BufNewFile,BufRead *.py
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "Default UTF-8 Char
-"set encoding=utf-8
+set encoding=utf-8
 
 "Use non-experimental clangd for Autocomplete
 let g:ycm_use_clangd = 0
 
 "Syntax Highlighting/Line Numbering
-"syntax on
+syntax on
 set nu
 set relativenumber
 
